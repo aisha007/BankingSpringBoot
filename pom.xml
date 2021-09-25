@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.p1.example</groupId>
-	<artifactId>spring-boot-microservices</artifactId>
+	<artifactId>bankingSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Boot Microservices Example</name>
+	<name>Banking App Microservice Example</name>
 	<description>Spring Boot Microservices Example by Joel Patrick Llosa. This example goes with a blog in examples.javacodegeeks.com</description>
 
 	<properties>
