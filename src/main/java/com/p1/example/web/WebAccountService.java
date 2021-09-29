@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Transactional
 @Service
-public class WebAccount_ctgService {
+public class WebAccountService {
 	@Autowired
 	@LoadBalanced
 	protected RestTemplate restTemplate;
@@ -17,13 +17,13 @@ public class WebAccount_ctgService {
 //	private CustomerRepository repo;
 	protected String serviceUrl;
 	
-	public WebAccount_ctgService(String serviceUrl) {
+	public WebAccountService(String serviceUrl) {
 		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl
 				: "http://" + serviceUrl;
 	}
 	
 	public String displayAll() {
-		return restTemplate.getForObject(serviceUrl + "/displayAccount_ctg", String.class);
+		return restTemplate.getForObject(serviceUrl + "/displayAccount", String.class);
 		
 	}
 	
