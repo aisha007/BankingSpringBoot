@@ -81,6 +81,18 @@ public class BankAppController {
 
 		return "customers";
 	}
+	@RequestMapping("/login")
+	public String validate(@RequestParam(defaultValue="2") String custid,
+			@RequestParam(defaultValue="123") String password, Model model) { //Add request Parameters
+		String isLoginSuccessful = customerService.validate(custid,password); 
+		logger.info("Login Data: " +isLoginSuccessful );
+		model.addAttribute("json", isLoginSuccessful );
+		if (isLoginSuccessful.equals("true"))
+			return "login";
+		else 
+			return "error";
+	} 
+
 
 	
 }
