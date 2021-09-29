@@ -10,14 +10,16 @@ public class Customer {
 		String cname; 
 		String dob; 
 		String mail_id;
+		String password;
 		public Customer(){
 			
 		}
-		public Customer(int custid, String cname, String dob, String mail_id) {
+		public Customer(int custid, String cname, String dob, String mail_id, String password) {
 			this.custid = custid;
 			this.cname = cname;
 			this.dob = dob;
 			this.mail_id = mail_id;
+			this.password = password;
 		}
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,5 +51,10 @@ public class Customer {
 		public String toString() {
 			return "Product [custid=" + custid + ", cname=" + cname + ", dob=" + dob + ", mail_id=" + mail_id + "]";
 		}
-	    
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
 }

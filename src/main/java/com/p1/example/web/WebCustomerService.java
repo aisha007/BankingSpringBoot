@@ -36,6 +36,8 @@ public class WebCustomerService {
 		return restTemplate.getForObject(serviceUrl + "/displayAll", String.class);
 		
 	}
-	
+	public String validate(String custid, String password) {
+		return restTemplate.getForObject(serviceUrl + "/validate?customerId={custid}&password={password}", String.class, custid, password); //Add parameters or use post method
+	}
 	
 }

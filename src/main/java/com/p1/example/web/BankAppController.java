@@ -19,18 +19,47 @@ public class BankAppController {
 	@Autowired
 	protected WebBankingService bankingService;
 
+	@Autowired
+	protected WebAccountsService accountsService;
 	
+	@Autowired
+	protected WebAccountService accountService;
 
 	protected Logger logger = Logger.getLogger(BankAppController.class
 			.getName());
 
 	// initialize all packages
-	public BankAppController(WebCustomerService customerService, WebBankingService bankingService) {
+	public BankAppController(WebCustomerService customerService, WebBankingService bankingService,
+			WebAccountsService accountsService, WebAccountService accountService) {
 		this.customerService = customerService;
 		this.bankingService = bankingService; 
+		this.accountsService = accountsService;
+		this.accountService = accountService;
 		
 	}
 
+	@RequestMapping("/displayAccount")
+	public String doDisplayAccountCtg(Model model) {
+
+//		String sum = customerService.add(addend1, addend2);
+		String account = accountService.displayAll(); 
+		logger.info("Account Data: " +account );
+		model.addAttribute("json", account );
+
+		return "account";
+	}
+	
+	@RequestMapping("/displayAccounts")
+	public String doDisplayAccounts(Model model) {
+
+//		String sum = customerService.add(addend1, addend2);
+		String accounts = accountsService.displayAll(); 
+		logger.info("Account Details: " +accounts );
+		model.addAttribute("json", accounts );
+
+		return "accounts";
+	}
+	
 	@RequestMapping("/displayBanking")
 	public String doDisplayBanking(Model model) {
 
@@ -50,8 +79,20 @@ public class BankAppController {
 		logger.info("Customer Data: " +customers );
 		model.addAttribute("json", customers );
 
-		return "banking";
+		return "customers";
 	}
+	@RequestMapping("/login")
+	public String validate(@RequestParam(defaultValue="2") String custid,
+			@RequestParam(defaultValue="123") String password, Model model) { //Add request Parameters
+		String isLoginSuccessful = customerService.validate(custid,password); 
+		logger.info("Login Data: " +isLoginSuccessful );
+		model.addAttribute("json", isLoginSuccessful );
+		if (isLoginSuccessful.equals("true"))
+			return "login";
+		else 
+			return "error";
+	} 
+
 
 	
 }

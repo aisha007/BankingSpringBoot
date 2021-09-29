@@ -29,11 +29,17 @@
 	<hr>
 	
 	<h3>Account Category Service</h3>
-	<form action="/displayAccountCtg">
+	<form action="/displayAccount">
 	  	
 	  	<input type="submit" value="DISPLAY_ACCOUNT_CTG">
 	</form>	
 	<hr>
+
+	<form action="/login">
+	  	<input type="text" value="Customer ID" name="custid">
+	  	<input type="text" value="Password" name="password">
+	  	<input type="submit" value="Login">
+	</form>	
 
 	<div th:replace="footer :: copy"></div>
 
