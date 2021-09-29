@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -52,7 +53,16 @@ public class CustomerController {
 		 String jsonList = gson.toJson(listAll());
 		return jsonList;
 	}
-	
+	@GetMapping("/validate")
+	public String doValidate(@RequestParam(defaultValue="2") String custid,
+			@RequestParam(defaultValue="123") String password){
+		int tc_custid = Integer.valueOf(custid);
+		Customer c = getById(tc_custid);
+		if ((c.getCustid() == tc_custid) && (c.getPassword().equals(password)))
+			return "true";
+		else
+			return "false";
+	}
 	@GetMapping("customers/{id}")
 	public ResponseEntity<Customer> get(@PathVariable Integer id){
 		try{
