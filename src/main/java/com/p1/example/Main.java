@@ -1,7 +1,8 @@
 package com.p1.example;
 
 import com.p1.example.registration.EurekaServer;
-import com.p1.example.rest.account_ctg.Account_ctgServer;
+import com.p1.example.rest.account.AccountServer;
+
 import com.p1.example.rest.accounts.AccountsServer;
 import com.p1.example.rest.banking.BankingServer;
 import com.p1.example.rest.customer.CustomerServer;
@@ -35,8 +36,8 @@ public class Main {
 		else if (serverName.equals("banking")) {
 			BankingServer.main(args);
 		}
-		else if (serverName.equals("account_ctg")) {
-			Account_ctgServer.main(args);
+		else if (serverName.equals("account")) {
+			AccountServer.main(args);
 		}
 		else if (serverName.equals("web")) {
 			WebServer.main(args);
